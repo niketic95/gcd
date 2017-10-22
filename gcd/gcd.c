@@ -1,57 +1,35 @@
 #include "gcd.h"
-TYPE divop(TYPE a, TYPE b) {
-  int_least8_t sign = 1;
-  TYPE ret = 0;
+
+uint_fast16_t modop(uint_fast16_t a, uint_fast16_t b) {
   if (b == 0) {
     exit(EXIT_FAILURE);
   }
-
-  if (b < 0 && a < 0) {
-    if (b < a) {
-      return 0;
-    }
+  uint_fast16_t modulo = a;
+  while (modulo >= b) {
+    modulo -= b;
   }
-  if (b < 0 && a > 0) {
-    if (b < -a) {
-      return 0;
-    }
-  }
-  if (b > 0 && a < 0) {
-    if (-b < a) {
-      return 0;
-    }
-  }
-  if (b > 0 && a > 0) {
-    if (b > a) {
-      return 0;
-    }
-  }
-
-  if (b < 0) {
-    sign = -sign;
-  }
-  if (a < 0) {
-    sign = -sign;
-    while (ret * b > a) {
-      ret += sign;
-    }
-    if (ret * b != a) {
-      ret -= sign;
-    }
-  } else {
-    while (ret * b < a) {
-      ret += sign;
-    }
-    if (ret * b != a) {
-      ret -= sign;
-    }
-  }
-  return ret;
+  return modulo;
 }
 
-TYPE modop(TYPE a, TYPE b) {
-  if (b == 0) {
-    exit(EXIT_FAILURE);
+uint_fast16_t gcd(uint_fast16_t a, uint_fast16_t b) {
+  uint_fast16_t r;
+  if (a == 0 || b == 0) {
+    return 0;
   }
-  return a - divop(a, b) * b;
+  r = modop(a, b);
+  while (r != 0) {
+    a = b;
+    b = r;
+    r = modop(a, b);
+  }
+  return b;
+}
+
+uint_fast16_t find_gcd(uint_fast16_t arr[], uint_fast16_t n) {
+  uint_fast16_t res = arr[0];
+  int_least16_t i;
+  for (i = 1; i < n; i++) {
+    res = gcd(arr[i], res);
+  }
+  return res;
 }

@@ -1,13 +1,12 @@
 #include "gcd/gcd.h"
 
-#define TYPE unsigned
 int main() {
-  TYPE a = UINT_MAX;
-  TYPE b = 1;
-  printf("mod(a,b) = %d\n", modop(a, b));
-  printf("a % b = %d\n", a % b);
-  printf("divop(a,b) = %d\n", divop(a, b));
-  printf("a / b = %d\n", a / b);
-
+  uint_fast16_t a = UINT_FAST16_MAX;
+  uint_fast16_t b = UINT_FAST16_MAX;
+  int_fast16_t i = 0;
+  printf("%lu\n", modop(UINT_FAST16_MAX, 2));
+  // printf("%lu\n", gcd(2, 10));
+  // uint_fast16_t arr[] = {1024, 128, 256};
+  // printf("%lu\n", find_gcd(arr, 4));
   return 0;
 }

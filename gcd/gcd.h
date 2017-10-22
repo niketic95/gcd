@@ -6,11 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifndef TYPE
-#define TYPE int_fast16_t
-#endif
-
-TYPE divop(TYPE a, TYPE b);
-TYPE modop(TYPE a, TYPE b);
-
+uint_fast16_t modop(uint_fast16_t a, uint_fast16_t b);
+uint_fast16_t gcd(uint_fast16_t a, uint_fast16_t b);
+uint_fast16_t find_gcd(uint_fast16_t arr[], uint_fast16_t n);
 #endif // GCD_H
