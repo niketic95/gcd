@@ -1,48 +1,50 @@
 /** @file gcd.h
- *  @brief Prototipovi za dinamicku biblioteku
+ *  @brief Declarations for greatest common divisor (GCD)
  *
- * Ova datoteka sadrzi deklaracije funkcija koje se koriste za racunanje najveceg zajednickog
- * delioca
+ * This file contains function declarations which are used for calculating the greatest
+ * common divisor
  *
  *  @author Stefan M. Nicetin
  *  @bug No known bugs
  *
  */
 
-#ifndef GCD_H
-#define GCD_H
+#ifndef GCD_H_
+#define GCD_H_
 
 #include <stdint.h>
 
-/** @brief Racuna ostatak pri deljenju
+/** @brief Calculates remainder of two numbers
  *
- * 	Ako je imenilac jednak 0 iz programa sa izadje
- * 	Modop je vecinom realizovan pomocu bitskih operacija zbog fokusa na brzinu izvrsavanja
- *  funkcije. Zbog moguce pojave overflow-a pri shiftovanju za mnogo vece vrednosti, vrednost
- *  imenioca mora da bude smestena u promenljivu koja ima vecu velicinu nego tip imenioca.
+ *  @note When denominator is 0 this function returns its numerator because
+ *  gcd(2,0) = 2 (2 Divides both 0 and 2) but 2%0 is undefined behavior.
  *
- * @param Operandi za racunaje ostatka (a%b)
- * @return Ostatak pri deljenju
+ *  @details the modulo operator is implemented using bitwise operations so it can be
+ *  executed as fast as possible. Because of possible overflow occurring when the denominator
+ *  is a really big number, the denominator is stored inside a bigger type.
+ *
+ * @param Modulo operands (a%b)
+ * @return Remainder (Excluding when the denominator is 0)
  */
-uint_least32_t modop( uint_least32_t a, uint_least32_t b );
+uint_least32_t modop( uint_least32_t a, uint_least32_t b);
 
-/** @brief Racuna najveci zajednicki delilac
+/** @brief Calculates the greatest common divisor (GCD)
  *
- *  Iterativno resenje najveceg zajednickog delioca uz specijalan slucaj za nulte vrednosti.
- *  Zato sto vrednosti NZD su uvek ne negativne povratna vrednost je neoznacen ceo broj.
- *  Parametri su takodje neoznaceni zbog nacina implementacije ostatka pri deljenju.
+ *   @details Iterative solution for calculating the GCD with special cases for 0
+ *  since the output of GCD is always non negative the return value is an unsigned number
  *
- * @param Operandi od kojih se racuna NZD
- * @return NZD
+ * @param Operands for which the GCD is calculated
+ * @return GCD
  */
-uint_least32_t gcd( uint_least32_t a, uint_least32_t b );
+uint_least32_t gcd( uint_least32_t a, uint_least32_t b);
 
-/** @brief Racuna najveci zajednicki delilac za niz ne oznacenih vrednosti
+/** @brief Calculates GCD on a array of numbers
  *
- * Prelazi kroz ceo niz i sukcesivno primenjuje gcd.
+ * Function iterates over array applying GCD
  *
- * @param Niz i njegova duzina na kojeg ce se primeniti gcd
- * @return NZD za ceo niz
+ * @param Input array and its length
+ * @return GCD of an array of nubmers
  */
-uint_least32_t calculate_gcd( const uint_least32_t arr[], const int_least16_t n );
-#endif  // GCD_H
+uint_least32_t calculate_gcd( const uint_least32_t arr[], const int_least16_t n);
+
+#endif /* GCD_H_ */
