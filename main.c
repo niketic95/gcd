@@ -1,33 +1,31 @@
 /**
  * @file main.c
- * @brief Racunanje najveceg zajednickog delioca primenom euklidovog algoritma bez operatora
- * deljenja i ostatka pri deljenju
+ * @brief Calculating the greatest common divisor using the euclidean algorithm and a software
+ * implementation of the modulo operator.
  *
- * Euklidov algoritam je zasnovan na principu da se najveci zajednicki delioc dva broja ne menja
- * ako se veci broj zameni sa njegovom razlikom sa manjim brojem. Mada takvo resenje je ne efikasno
- * ako su jedan od brojeva mnogo veci od drugog. Efikasnija verzija euklidovog algoritma je da
- * umesto razlike veceg broja zamenimo sa ostatkom pri deljenju i algoritam se zavrsava dok ostatak
- * ne bude 0.
+ * The Euclidean algorithm is based on the principle that the greatest common divisor of two numbers
+ * does not change if the larger number is replaced by its difference with the smaller number.
  *
- * Implementacija resenja se zasniva na efikasnijoj verziji euklidovog algoritma, sa softverski
- * implementiranom funkcijom koja racuna ostatak pri deljenju. Program mora da racuna NZD za niz
- * podataka, tako sto sukcesivno primenjuje euklidov algoritam nad nizom. Program radi samo sa
- * neoznacenim brojevima zbog bitwise implementacije racunanja modula. Program mora da radi nad
- * nizom podataka, tako je u main funkciji definisana duzina niza koju korisnik moze da menja,
- * korisnik unosi podatke u niz za koje ce biti izracunat najveci zajednicki delilac.
+ * The version of the Euclidean algorithm described above  can take many subtraction steps to find the GCD
+ * when one of the given numbers is much bigger than the other. A more efficient version of the algorithm
+ * shortcuts these steps, instead replacing the larger of the two numbers by its remainder when divided by
+ * the smaller of the two.
  *
  * @author Stefan Nicetin, RA188-2014
  * @date 23.10.2017.
  *
  * @bug No known bugs
  */
-#include "gcd/gcd.h"
+
+
+#include "gcd.h"
 #include <inttypes.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #define ARRAY_SIZE 20
-int main( )
+
+int main(void)
 {
 	uint_least32_t array[ ARRAY_SIZE ] = { 0 };
 	int_least16_t  size;
@@ -43,14 +41,12 @@ int main( )
 	{
 		printf( "Array[%" PRIdLEAST16 "] = ", index );
 		scanf( "%" SCNuLEAST32, ( array + index ) );
-		printf( "\n" );
 	}
 	printf( "GCD: { " );
 	for( index = 0; index < size; index++ )
 	{
 		printf( "%" PRIuLEAST32 " ", array[ index ] );
 	}
-
-	printf( "} = %" PRIuLEAST32 "\n", calculate_gcd( array, size ) );
+	printf( "} = %" PRIuLEAST32 "\n", calculate_gcd( array, size) );
 	return 0;
 }
