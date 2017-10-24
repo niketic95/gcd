@@ -1,7 +1,8 @@
 /** @file gcd.h
  *  @brief Prototipovi za dinamicku biblioteku
  *
- * Ova datoteka sadrzi deklaracije funkcija koje se koriste za racunanje najveceg zajednickog delioca
+ * Ova datoteka sadrzi deklaracije funkcija koje se koriste za racunanje najveceg zajednickog
+ * delioca
  *
  *  @author Stefan M. Nicetin
  *  @bug No known bugs
@@ -13,7 +14,6 @@
 
 #include <stdint.h>
 
-
 /** @brief Racuna ostatak pri deljenju
  *
  * 	Ako je imenilac jednak 0 iz programa sa izadje
@@ -24,8 +24,7 @@
  * @param Operandi za racunaje ostatka (a%b)
  * @return Ostatak pri deljenju
  */
-uint_least32_t modop(uint_least32_t a, uint_least32_t b);
-
+uint_least32_t modop( uint_least32_t a, uint_least32_t b );
 
 /** @brief Racuna najveci zajednicki delilac
  *
@@ -36,8 +35,7 @@ uint_least32_t modop(uint_least32_t a, uint_least32_t b);
  * @param Operandi od kojih se racuna NZD
  * @return NZD
  */
-uint_least32_t gcd(uint_least32_t a, uint_least32_t b);
-
+uint_least32_t gcd( uint_least32_t a, uint_least32_t b );
 
 /** @brief Racuna najveci zajednicki delilac za niz ne oznacenih vrednosti
  *
@@ -46,5 +44,5 @@ uint_least32_t gcd(uint_least32_t a, uint_least32_t b);
  * @param Niz i njegova duzina na kojeg ce se primeniti gcd
  * @return NZD za ceo niz
  */
-uint_least32_t calculate_gcd(const uint_least32_t arr[],const int_least16_t n);
-#endif // GCD_H
+uint_least32_t calculate_gcd( const uint_least32_t arr[], const int_least16_t n );
+#endif  // GCD_H
