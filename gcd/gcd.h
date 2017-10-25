@@ -21,7 +21,7 @@
  *
  *  @details the modulo operator is implemented using bitwise operations so it can be
  *  executed as fast as possible. Because of possible overflow occurring when the denominator
- *  is a really big number, the denominator is stored inside a bigger type.
+ *  is a really big number, the denominator and digit_pos are stored inside a bigger type.
  *
  * @param Modulo operands (a%b)
  * @return Remainder (Excluding when the denominator is 0)
@@ -36,7 +36,7 @@ uint_least32_t modop( uint_least32_t a, uint_least32_t b);
  * @param Operands for which the GCD is calculated
  * @return GCD
  */
-uint_least32_t gcd( uint_least32_t a, uint_least32_t b);
+uint_least32_t gcd( int_least32_t a, int_least32_t b);
 
 /** @brief Calculates GCD on a array of numbers
  *
@@ -45,6 +45,6 @@ uint_least32_t gcd( uint_least32_t a, uint_least32_t b);
  * @param Input array and its length
  * @return GCD of an array of nubmers
  */
-uint_least32_t calculate_gcd( const uint_least32_t arr[], const int_least16_t n);
+uint_least32_t calculate_gcd( const int_least32_t arr[], const int_least16_t n);
 
 #endif /* GCD_H_ */
